@@ -10,8 +10,8 @@ the corresponding code without it.
 
 ![side-by-side comparison of the macro and the function](https://i.imgur.com/Bjy4bcV.png)
 
-In the expanded code, the event target appears only on line 16, whereas in the macro it's the
-very first argument, which then followed by the event name, then "closure prologue", and - lastly -
+In the expanded code, the event target (`open_files_btn`) appears only on line 16, whereas in the macro it's the
+very first argument, which then followed by the event name, then the "closure prologue", and - lastly -
 the closure itself.
 
 "Closure prologue" is a stipulative term for the code that is executed before the closure itself. It's useful for
