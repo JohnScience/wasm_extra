@@ -1,5 +1,5 @@
 use proc_macro2::{Ident, TokenStream};
-use syn::{parse::{Parse, ParseStream, ParseBuffer}, token::{Comma, Add}, LitStr, braced, ExprClosure};
+use syn::{parse::{Parse, ParseStream, ParseBuffer}, token::{Comma, And}, LitStr, braced, ExprClosure};
 use quote::{quote, ToTokens};
 
 pub(crate) enum EventTarget {
@@ -59,8 +59,8 @@ pub(crate) struct Args {
 
 impl Parse for EventTarget {
     fn parse(input: ParseStream) -> syn::Result<Self> {
-        if input.peek(Add) {
-            input.parse::<Add>()?;
+        if input.peek(And) {
+            input.parse::<And>()?;
             let ident = input.parse::<Ident>()?;
             Ok(Self::DoublyReferred(ident))
         } else {
