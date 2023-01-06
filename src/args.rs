@@ -104,7 +104,7 @@ impl Args {
                     #event,
                     __handler.as_ref().unchecked_ref()
                 ).unwrap();
-                ::wasm_bindgen::closure::Closure::forget(handler);
+                ::wasm_bindgen::closure::Closure::forget(__handler);
             }
         }
     }
