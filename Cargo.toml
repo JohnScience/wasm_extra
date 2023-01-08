@@ -7,3 +7,13 @@ edition = "2021"
 
 [dependencies]
 wasm_extra_macros = { git="https://github.com/JohnScience/wasm_extra_macros" }
+web-sys = "0.3.60"
+
+[features]
+default = ["all"]
+all = [
+    "Window",
+    "HtmlCanvasElement",
+]
+Window = ["web-sys/Window"]
+HtmlCanvasElement = ["web-sys/HtmlCanvasElement"]
