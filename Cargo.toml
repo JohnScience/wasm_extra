@@ -1,19 +1,42 @@
 [package]
 name = "wasm_extra"
 version = "0.1.0"
+authors = ["Dmitrii Demenev <demenev.dmitriy1@gmail.com>"]
 edition = "2021"
+rust-version = "1.56.1" # https://github.com/foresterre/cargo-msrv
+description = "Extra utilities for WASM."
+documentation = "https://docs.rs/wasm_extra"
+readme = "README.md"
+repository = "https://github.com/JohnScience/wasm_extra"
+license = "MIT OR Apache-2.0"
+# license-file | not needed
+keywords = ["wasm", "frontend"]
+categories = ["wasm", "web-programming"] # https://crates.io/category_slugs
+# workspace | not needed
+# build | not needed
+# links | not needed
+# exclude | not needed
+autobins = false
+# autoexamples = true
+autotests = false
+autobenches = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 wasm_extra_macros = { git="https://github.com/JohnScience/wasm_extra_macros" }
-web-sys = "0.3.60"
+web-sys = "0.3.61"
+wasm-bindgen = "0.2.84"
 
 [features]
 default = ["all"]
 all = [
     "Window",
     "HtmlCanvasElement",
+    "CanvasRenderingContext2d",
+    "MouseEvent"
 ]
 Window = ["web-sys/Window"]
 HtmlCanvasElement = ["web-sys/HtmlCanvasElement"]
+CanvasRenderingContext2d = ["web-sys/CanvasRenderingContext2d"]
+MouseEvent = ["web-sys/MouseEvent"]
