@@ -24,7 +24,7 @@ autobenches = false
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-wasm_extra_macros = { git="https://github.com/JohnScience/wasm_extra_macros" }
+wasm_extra_macros = "0.1.1"
 web-sys = "0.3.61"
 wasm-bindgen = "0.2.84"
 

@@ -51,9 +51,9 @@ checksum = "6f61fba1741ea2b3d6a1e3178721804bb716a68a6aeba1149b5d52e3d464ea66"
 
 [[package]]
 name = "proc-macro2"
-version = "1.0.49"
+version = "1.0.51"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "57a8eca9f9c4ffde41714334dee777596264c7825420f521abc92b5b5deb63a5"
+checksum = "5d727cae5b39d21da60fa540906919ad737832fe0b1c165da3a34d6548c849d6"
 dependencies = [
  "unicode-ident",
 ]
@@ -149,8 +149,9 @@ dependencies = [
 
 [[package]]
 name = "wasm_extra_macros"
-version = "0.1.0"
-source = "git+https://github.com/JohnScience/wasm_extra_macros#01c6c616e67c82381e4417762c1fbc98a6c555c0"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "edb9d88afe2263369d940dc13cf212255a024625eb7b3bfd8c2b65171944b142"
 dependencies = [
  "derive-syn-parse",
  "proc-macro2",
