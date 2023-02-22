@@ -1,4 +1,5 @@
 use wasm_bindgen::prelude::*;
+use web_sys::Event;
 
 #[cfg(feature = "Window")]
 pub trait WindowExt {
@@ -30,8 +31,26 @@ impl HtmlCanvasElementExt for web_sys::HtmlCanvasElement {
     #[inline]
     fn get_context_2d(&self) -> Result<web_sys::CanvasRenderingContext2d, JsValue> {
         self.get_context("2d")?
-            .map(|ctx| ctx.dyn_into::<web_sys::CanvasRenderingContext2d>().unwrap())
+            .map(|ctx| JsCast::dyn_into::<web_sys::CanvasRenderingContext2d>(ctx).unwrap())
             .ok_or_else(|| panic!("Failed to get 2d context"))
+    }
+}
+
+pub trait DocumentExt {
+    fn disable_context_menu(&self);
+}
+
+#[cfg(all(feature = "Document", feature = "HtmlElement"))]
+impl DocumentExt for web_sys::Document {
+    #[inline]
+    fn disable_context_menu(&self) {
+        let handler = ::wasm_bindgen::closure::Closure::<dyn ::core::ops::FnMut(_)>::new::<_>(
+            |event: Event| {
+                event.prevent_default();
+            }
+        );
+        self.body().unwrap().set_oncontextmenu(Some(::wasm_bindgen::JsCast::unchecked_ref(handler.as_ref())));
+        ::wasm_bindgen::closure::Closure::forget(handler);
     }
 }
 

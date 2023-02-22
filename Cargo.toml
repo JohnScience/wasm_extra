@@ -1,6 +1,6 @@
 [package]
 name = "wasm_extra"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Dmitrii Demenev <demenev.dmitriy1@gmail.com>"]
 edition = "2021"
 rust-version = "1.56.1" # https://github.com/foresterre/cargo-msrv
@@ -34,9 +34,13 @@ all = [
     "Window",
     "HtmlCanvasElement",
     "CanvasRenderingContext2d",
-    "MouseEvent"
+    "MouseEvent",
+    "HtmlElement",
+    "Document"
 ]
 Window = ["web-sys/Window"]
 HtmlCanvasElement = ["web-sys/HtmlCanvasElement"]
 CanvasRenderingContext2d = ["web-sys/CanvasRenderingContext2d"]
 MouseEvent = ["web-sys/MouseEvent"]
+Document = ["web-sys/Document"]
+HtmlElement = ["web-sys/HtmlElement"]
