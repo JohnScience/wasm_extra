@@ -8,7 +8,13 @@
 
 > Extra utilities for [`WASM`] and [`web-sys`].
 
-So far, the only thing that this crate offers is the `add_event_listener_with_callback!`
+## Extension traits
+
+The crate provides a number of extension traits for the `web-sys` types.
+
+## Macros
+
+One of the things that this crate offers is the `add_event_listener_with_callback!`
 macro named after the `::web_sys::EventTarget::add_event_listener_with_callback()`
 function.
 
