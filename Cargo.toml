@@ -1,6 +1,6 @@
 [package]
 name = "wasm_extra"
-version = "0.1.3"
+version = "0.1.5"
 authors = ["Dmitrii Demenev <demenev.dmitriy1@gmail.com>"]
 edition = "2021"
 rust-version = "1.56.1" # https://github.com/foresterre/cargo-msrv
@@ -40,6 +40,8 @@ all = [
     "HtmlElement",
     "Document",
     "ImageBitmap",
+    "ReadableStream",
+    "ReadableStreamDefaultController",
     "ReadableStreamDefaultReader",
 ]
 Window = ["web-sys/Window"]
@@ -49,4 +51,6 @@ MouseEvent = ["web-sys/MouseEvent"]
 Document = ["web-sys/Document"]
 HtmlElement = ["web-sys/HtmlElement"]
 ImageBitmap = ["web-sys/ImageBitmap"]
+ReadableStream = ["web-sys/ReadableStream"]
+ReadableStreamDefaultController = ["web-sys/ReadableStreamDefaultController"]
 ReadableStreamDefaultReader = ["web-sys/ReadableStreamDefaultReader"]
