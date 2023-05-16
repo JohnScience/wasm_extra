@@ -19,15 +19,20 @@ impl Future for ReadFuture {
         match result {
             core::task::Poll::Ready(Ok(value)) => {
                 let value = value.dyn_into::<js_sys::Object>().unwrap();
-                let done = js_sys::Reflect::get(&value, &"done".into())
+                let read: Read = if js_sys::Reflect::get(&value, &"done".into())
                     .unwrap()
                     .as_bool()
-                    .unwrap();
-                let value = js_sys::Reflect::get(&value, &"value".into())
                     .unwrap()
-                    .dyn_into::<Uint8Array>()
-                    .unwrap();
-                core::task::Poll::Ready(Ok(Read { done, value }))
+                {
+                    Read::Done
+                } else {
+                    let value = js_sys::Reflect::get(&value, &"value".into())
+                        .unwrap()
+                        .dyn_into::<Uint8Array>()
+                        .unwrap();
+                    Read::NotDone(value)
+                };
+                core::task::Poll::Ready(Ok(read))
             }
             core::task::Poll::Ready(Err(err)) => core::task::Poll::Ready(Err(err)),
             core::task::Poll::Pending => core::task::Poll::Pending,
@@ -35,9 +40,9 @@ impl Future for ReadFuture {
     }
 }
 
-pub struct Read {
-    pub done: bool,
-    pub value: Uint8Array,
+pub enum Read {
+    Done,
+    NotDone(Uint8Array),
 }
 
 pub trait ReadableStreamDefaultReaderExt {
